@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Commission a Painting — Sharmila Sharma</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #f5efe6;
+      color: #1a1208;
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      padding: 48px 24px 80px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Crect width='40' height='40' fill='%23f5efe6'/%3E%3Cline x1='0' y1='20' x2='20' y2='0' stroke='%23c9a84c' stroke-width='0.6' opacity='0.5'/%3E%3Cline x1='20' y1='0' x2='40' y2='20' stroke='%23c9a84c' stroke-width='0.6' opacity='0.5'/%3E%3Cline x1='40' y1='20' x2='20' y2='40' stroke='%23c9a84c' stroke-width='0.6' opacity='0.5'/%3E%3Cline x1='20' y1='40' x2='0' y2='20' stroke='%23c9a84c' stroke-width='0.6' opacity='0.5'/%3E%3Ccircle cx='20' cy='20' r='4' fill='none' stroke='%23c9a84c' stroke-width='0.7'/%3E%3Ccircle cx='20' cy='20' r='1.8' fill='%23ca6a5f' opacity='0.6'/%3E%3Ccircle cx='20' cy='15' r='1.2' fill='%23c9a84c' opacity='0.5'/%3E%3Ccircle cx='20' cy='25' r='1.2' fill='%23c9a84c' opacity='0.5'/%3E%3Ccircle cx='15' cy='20' r='1.2' fill='%23c9a84c' opacity='0.5'/%3E%3Ccircle cx='25' cy='20' r='1.2' fill='%23c9a84c' opacity='0.5'/%3E%3C/svg%3E");
+      background-size: 40px 40px;
+      background-repeat: repeat;
+    }
+
+    /* ── Card ── */
+    .card {
+      position: relative;
+      max-width: 620px;
+      margin: 48px auto;
+      background: #f5efe6;
+      padding: 0 56px 48px 56px;
+      box-shadow: 0 4px 40px rgba(26, 18, 8, 0.10);
+      border-top: 3px solid #c9a84c;
+      border-bottom: 3px solid #c9a84c;
+      border-left: 3px solid #c9a84c;
+      border-right: 3px solid #c9a84c;
+      outline: 0.8px solid #c9a84c;
+      outline-offset: 6px;
+      overflow: hidden;
+    }
+
+    .card-inner {
+      position: relative;
+      z-index: 1;
+      padding: 64px 72px;
+    }
+
+    /* ── Header illustration ── */
+    .illustration-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .illustration-header img {
+      display: block;
+    }
+
+    .horn-left {
+      width: 80px;
+      opacity: 0.8;
+    }
+
+    .pavilion {
+      width: 180px;
+      opacity: 0.9;
+    }
+
+    .horn-right {
+      width: 80px;
+      opacity: 0.8;
+      transform: scaleX(-1);
+    }
+
+    /* ── Eyebrow ── */
+    .eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      color: #c9a84c;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 14px;
+    }
+
+    /* ── Headline ── */
+    .headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 42px;
+      font-weight: 600;
+      color: #1a1208;
+      text-align: center;
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+
+    /* ── Subtext ── */
+    .subtext {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-style: italic;
+      color: #916a38;
+      text-align: center;
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+
+    /* ── SVG Divider ── */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 36px;
+    }
+
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background-color: #c9a84c;
+    }
+
+    .divider svg {
+      flex-shrink: 0;
+    }
+
+    /* ── Form ── */
+    .commission-form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .field-group label {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      color: #916a38;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .field-group input,
+    .field-group select,
+    .field-group textarea {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: #1a1208;
+      background-color: #decbaf;
+      border: 1px solid #c9a84c;
+      border-radius: 2px;
+      padding: 11px 14px;
+      outline: none;
+      width: 100%;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .field-group input::placeholder,
+    .field-group textarea::placeholder {
+      color: #b89a6e;
+    }
+
+    .field-group input:focus,
+    .field-group select:focus,
+    .field-group textarea:focus {
+      border-color: #916a38;
+      box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.15);
+    }
+
+    .select-wrapper {
+      position: relative;
+    }
+
+    .select-wrapper::after {
+      content: '';
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-top: 5px solid #916a38;
+      pointer-events: none;
+    }
+
+    .select-wrapper select {
+      padding-right: 36px;
+      cursor: pointer;
+    }
+
+    .field-group textarea {
+      resize: vertical;
+      min-height: 110px;
+      line-height: 1.6;
+    }
+
+    /* ── Submit button ── */
+    .submit-btn {
+      width: 100%;
+      padding: 15px;
+      background: #1a1208;
+      color: #c9a84c;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background-color 0.2s, transform 0.1s;
+      margin-top: 4px;
+      text-transform: uppercase;
+    }
+
+    .submit-btn:hover {
+      background: #1a1208;
+      color: #c9a84c;
+      border: none;
+    }
+
+    .submit-btn:active {
+      transform: translateY(1px);
+    }
+
+    /* ── Signature ── */
+    .signature {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px;
+      font-style: italic;
+      color: #916a38;
+      text-align: center;
+      margin-top: 36px;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 520px) {
+      .card {
+        padding: 40px 20px;
+      }
+
+      .card-inner {
+        padding-left: 28px;
+        padding-right: 28px;
+      }
+
+      .border-strip {
+        width: 24px;
+      }
+
+      .field-row {
+        grid-template-columns: 1fr;
+      }
+
+      .headline {
+        font-size: 34px;
+      }
+
+      .illustration-header {
+        gap: 16px;
+      }
+
+      .horn-left,
+      .horn-right {
+        width: 60px;
+      }
+
+      .pavilion {
+        width: 140px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <img src="Borders.svg" style="position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:2;" alt="Card Border Overlay">
+    <div class="card-inner" style="position:relative; z-index:1; padding:64px 72px;">
+
+      <!-- Header Illustration -->
+      <img src="../01 - Brand Assets/Minjjar_Procession.png" style="width: 100%; display: block; margin: 0 0 8px 0;" alt="Minjjar Procession">
+
+      <!-- Headline -->
+      <h1 class="headline">A <span style="color: #c9a84c; font-style: italic; font-family: 'Cormorant Garamond', serif; font-size: 1.15em; font-weight: normal;">painting</span> is worth a thousand words.</h1>
+
+      <!-- Subtext -->
+      <p class="subtext">Tell us who or what you'd like painted. We'll handle the rest.</p>
+
+      <!-- Divider -->
+      <div class="divider" aria-hidden="true">
+        <div class="divider-line"></div>
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 0L12 6L6 12L0 6L6 0Z" fill="#c9a84c"/>
+        </svg>
+        <div class="divider-line"></div>
+      </div>
+
+      <!-- Form -->
+      <form id="commissionForm" class="commission-form">
+
+        <!-- Row: Full Name + Phone -->
+        <div class="field-row">
+          <div class="field-group">
+            <label for="fullName">Full Name</label>
+            <input
+              type="text"
+              id="fullName"
+              name="name"
+              placeholder="Your full name"
+              required
+            >
+          </div>
+          <div class="field-group">
+            <label for="phone">Phone Number</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="+91 98765 43210"
+            >
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="field-group">
+          <label for="email">Email Address</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="you@example.com"
+            required
+          >
+        </div>
+
+        <!-- Portrait subject -->
+        <div class="field-group">
+          <label for="portraitOf">WHAT WOULD YOU LIKE PAINTED?</label>
+          <input
+            type="text"
+            id="portraitOf"
+            name="subject"
+            placeholder="e.g. My grandmother, the mountains of Himachal, our family"
+            required
+          >
+        </div>
+
+        <!-- Row: Size + Timeline -->
+        <div class="field-row">
+          <div class="field-group">
+            <label for="size">Preferred Size</label>
+            <div class="select-wrapper">
+              <select id="preferredSize" name="size" required>
+                <option value="" disabled selected>Select a size</option>
+                <option value="small">Small 12×16 in</option>
+                <option value="medium">Medium 18×24 in</option>
+                <option value="large">Large 24×36 in</option>
+                <option value="custom">Custom</option>
+              </select>
+            </div>
+          </div>
+          <div class="field-group">
+            <label for="timeline">Timeline</label>
+            <div class="select-wrapper">
+              <select id="timeline" name="timeline" required>
+                <option value="" disabled selected>Select a timeline</option>
+                <option value="1month">Within 1 month</option>
+                <option value="3months">Within 3 months</option>
+                <option value="6months">Within 6 months</option>
+                <option value="flexible">No fixed timeline</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Requirements textarea -->
+        <div class="field-group">
+          <label for="requirements">Any specific requirements</label>
+          <textarea
+            id="requirements"
+            name="requirements"
+            placeholder="Describe the mood, references, colours, or anything else you'd like me to know…"
+          ></textarea>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="submit-btn">Submit</button>
+
+      </form>
+
+      <!-- Signature -->
+
+    </div><!-- /.card-inner -->
+  </div><!-- /.card -->
+
+  <script>
+    document.getElementById('commissionForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const formData = {
+        submission_date: new Date().toLocaleDateString('en-IN'),
+        full_name: document.getElementById('fullName').value,
+        phone: document.getElementById('phone').value,
+        email: document.getElementById('email').value,
+        portrait_of: document.getElementById('portraitOf').value,
+        preferred_size: document.getElementById('preferredSize').value,
+        timeline: document.getElementById('timeline').value,
+        requirements: document.getElementById('requirements').value
+      };
+
+      try {
+        await fetch('https://hook.eu1.make.com/41yjtcl9c66gevdmytbdpsuoroljlugr', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        });
+        window.location.href = 'thankyou.html';
+      } catch(err) {
+        alert('Something went wrong. Please try again.');
+      }
+    });
+  </script>
+</body>
+</html>

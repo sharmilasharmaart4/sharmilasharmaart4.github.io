@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body { background: #e8dcc8; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+.namaste-container { position: relative; width: 280px; height: 280px; }
+.namaste-container img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+.start { 
+  animation: startAnim 7s ease-in-out infinite; 
+}
+
+.end { 
+  opacity: 0; 
+  animation: endAnim 7s ease-in-out infinite; 
+}
+
+@keyframes startAnim { 
+  0%   { opacity: 1; }
+  10%  { opacity: 1; }
+  40%  { opacity: 0.25; }
+  60%  { opacity: 0.25; }
+  85%  { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+@keyframes endAnim { 
+  0%   { opacity: 0; }
+  10%  { opacity: 0; }
+  40%  { opacity: 1; }
+  60%  { opacity: 1; }
+  85%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+</style>
+</head>
+<body>
+<div class="namaste-container">
+  <img class="start" src="../01 - Brand Assets/Start_final.png">
+  <img class="end" src="../01 - Brand Assets/End_final.png">
+</div>
+</body>
+</html>
