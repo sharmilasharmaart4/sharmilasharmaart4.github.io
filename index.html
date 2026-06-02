@@ -430,7 +430,7 @@
       };
 
       try {
-        await fetch('https://hook.eu1.make.com/41yjtcl9c66gevdmytbdpsuoroljlugr', {
+        const response = await fetch('https://hook.eu1.make.com/41yjtcl9c66gevdmytbdpsuoroljlugr', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(formData)
