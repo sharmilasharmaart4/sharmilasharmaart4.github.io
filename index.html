@@ -19,28 +19,10 @@
       color: #1a1208;
       font-family: 'Inter', sans-serif;
       min-height: 100vh;
-      padding: 48px 0 80px;
+      padding: 48px 24px 80px;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Crect width='40' height='40' fill='%23f5efe6'/%3E%3Cline x1='0' y1='20' x2='20' y2='0' stroke='%23c9a84c' stroke-width='0.6' opacity='0.5'/%3E%3Cline x1='20' y1='0' x2='40' y2='20' stroke='%23c9a84c' stroke-width='0.6' opacity='0.5'/%3E%3Cline x1='40' y1='20' x2='20' y2='40' stroke='%23c9a84c' stroke-width='0.6' opacity='0.5'/%3E%3Cline x1='20' y1='40' x2='0' y2='20' stroke='%23c9a84c' stroke-width='0.6' opacity='0.5'/%3E%3Ccircle cx='20' cy='20' r='4' fill='none' stroke='%23c9a84c' stroke-width='0.7'/%3E%3Ccircle cx='20' cy='20' r='1.8' fill='%23ca6a5f' opacity='0.6'/%3E%3Ccircle cx='20' cy='15' r='1.2' fill='%23c9a84c' opacity='0.5'/%3E%3Ccircle cx='20' cy='25' r='1.2' fill='%23c9a84c' opacity='0.5'/%3E%3Ccircle cx='15' cy='20' r='1.2' fill='%23c9a84c' opacity='0.5'/%3E%3Ccircle cx='25' cy='20' r='1.2' fill='%23c9a84c' opacity='0.5'/%3E%3C/svg%3E");
       background-size: 40px 40px;
       background-repeat: repeat;
-    }
-
-    .page-wrapper {
-      position: relative;
-      max-width: 100%;
-      padding: 0 56px;
-      margin: 0 auto;
-    }
-
-    .border-overlay {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.95;
     }
 
     /* ── Card ── */
@@ -58,7 +40,6 @@
       outline: 0.8px solid #c9a84c;
       outline-offset: 6px;
       overflow: hidden;
-      z-index: 1;
     }
 
     .card-inner {
@@ -275,10 +256,6 @@
 
     /* ── Responsive ── */
     @media (max-width: 520px) {
-      .page-wrapper {
-        padding: 0 20px;
-      }
-
       .card {
         padding: 40px 20px;
       }
@@ -286,6 +263,10 @@
       .card-inner {
         padding-left: 28px;
         padding-right: 28px;
+      }
+
+      .border-strip {
+        width: 24px;
       }
 
       .field-row {
@@ -309,25 +290,13 @@
         width: 140px;
       }
     }
-
-    @media (max-width: 480px) {
-      .border-overlay {
-        display: none;
-      }
-
-      .card {
-        border-left: none;
-        border-right: none;
-      }
-    }
   </style>
 </head>
 <body>
 
-  <div class="page-wrapper">
-    <img src="Borders.svg" class="border-overlay" alt="Border Overlay">
-    <div class="card">
-      <div class="card-inner">
+  <div class="card">
+    <img src="Borders.svg" style="position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:2;" alt="Card Border Overlay">
+    <div class="card-inner" style="position:relative; z-index:1; padding:64px 72px;">
 
       <!-- Header Illustration -->
       <img src="Minjjar_Procession.png" style="width: 100%; display: block; margin: 0 0 8px 0;" alt="Minjjar Procession">
@@ -442,9 +411,8 @@
 
       <!-- Signature -->
 
-      </div><!-- /.card-inner -->
-    </div><!-- /.card -->
-  </div><!-- /.page-wrapper -->
+    </div><!-- /.card-inner -->
+  </div><!-- /.card -->
 
   <script>
     document.getElementById('commissionForm').addEventListener('submit', async function(e) {
