@@ -28,8 +28,9 @@
     /* ── Card ── */
     .card {
       position: relative;
+      width: 90vw;
       max-width: 620px;
-      min-height: 1307px;
+      aspect-ratio: 620 / 1307;
       margin: 48px auto;
       background: #f5efe6;
       display: flex;
@@ -147,7 +148,7 @@
 <body>
 
   <div class="card">
-    <img src="Borders.svg" style="position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:2;" alt="Card Border Overlay">
+    <img src="Borders.svg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: fill; pointer-events: none; z-index: 2;" alt="Card Border Overlay">
     <div class="card-inner">
 
       <div class="namaste-container" aria-hidden="true">

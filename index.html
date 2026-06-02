@@ -33,9 +33,8 @@
       background: #f5efe6;
       padding: 0 56px 48px 56px;
       box-shadow: 0 4px 40px rgba(26, 18, 8, 0.10);
-      border-style: solid;
-      border-image: url('Borders.svg') 120 repeat;
-      border-image-width: 40px;
+      border-left: 1.5px solid #c9a84c;
+      border-right: 1.5px solid #c9a84c;
       outline: 0.8px solid #c9a84c;
       outline-offset: 6px;
       overflow: hidden;
@@ -295,6 +294,7 @@
 <body>
 
   <div class="card">
+    <img src="Borders.svg" style="width:100%; display:block; margin-bottom: 16px;">
     <div class="card-inner" style="position:relative; z-index:1; padding:64px 72px;">
 
       <!-- Header Illustration -->
@@ -411,6 +411,7 @@
       <!-- Signature -->
 
     </div><!-- /.card-inner -->
+    <img src="Borders.svg" style="width:100%; display:block; margin-top: 16px; transform: scaleY(-1);">
   </div><!-- /.card -->
 
   <script>
