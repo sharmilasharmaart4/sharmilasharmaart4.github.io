@@ -400,6 +400,9 @@
           ></textarea>
         </div>
 
+        <!-- Honeypot -->
+        <input type="text" name="website" id="website" style="display:none !important; position:absolute; left:-9999px;" tabindex="-1" autocomplete="off" placeholder="Leave this empty">
+
         <!-- Submit -->
         <button type="submit" class="submit-btn">Submit</button>
 
@@ -409,6 +412,15 @@
 
     </div><!-- /.card-inner -->
   </div><!-- /.card -->
+
+  <script>
+    document.querySelector('form').addEventListener('submit', function(e) {
+      if (document.getElementById('website').value !== '') {
+        e.preventDefault();
+        return false;
+      }
+    });
+  </script>
 
   <script>
     document.getElementById('commissionForm').addEventListener('submit', async function(e) {
