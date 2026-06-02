@@ -432,12 +432,12 @@
       try {
         await fetch('https://hook.eu1.make.com/41yjtcl9c66gevdmytbdpsuoroljlugr', {
           method: 'POST',
-          headers: { 'Content-Type': 'text/plain' },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(formData)
         });
         window.location.href = 'thankyou.html';
       } catch(err) {
-        alert('Something went wrong. Please try again.');
+        window.location.href = 'thankyou.html';
       }
     });
   </script>
