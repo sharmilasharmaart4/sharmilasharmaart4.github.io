@@ -158,5 +158,12 @@
     </div><!-- /.card-inner -->
   </div><!-- /.card -->
 
+  <script>
+    history.pushState(null, null, location.href);
+    window.addEventListener('popstate', function() {
+      history.pushState(null, null, location.href);
+      document.body.innerHTML = '<div style="min-height:100vh; display:flex; align-items:center; justify-content:center; background:#f5efe6; font-family: Cormorant Garamond, serif; text-align:center; padding: 40px;"><div><p style="font-size:22px; color:#1a1208; font-style:italic; margin:0 0 12px;">To submit another entry,</p><p style="font-size:18px; color:#916a38; margin:0;">please open the form link again.</p></div></div>';
+    });
+  </script>
 </body>
 </html>
